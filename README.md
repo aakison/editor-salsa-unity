@@ -5,7 +5,7 @@ Editor extensions to add handy features to menu, inspector and hierarchy.
 This repo is designed to be used as a submodule of an existing Unity3D repo.  E.g.
 
 ```
-    git submodule add https://github.com/aakison/editor-salsa-unity.git Assets/EditorSalsa
+    git submodule add https://github.com/aakison/editor-salsa-unity.git Assets/Modules/EditorSalsa
 ```
 
 There are no demo scenes or resources in this repo, just the required files so that your solution is not polluted with unnecessary files.
