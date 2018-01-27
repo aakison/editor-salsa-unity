@@ -27,7 +27,7 @@ public class ToolsCreateLayers {
             var name = LayerMask.LayerToName(i);
             if(!string.IsNullOrWhiteSpace(name)) {
                 var id = MakeValidIdentifier(name);
-                var bit = i == 0 ? 0 : 1 << (i - 1);
+                var bit = 1 << i;
                 code.AppendLine("    /// <Summary>");
                 code.AppendLine($"    /// The layer `{name}` in position {i}");
                 code.AppendLine("    /// </Summary>");
