@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
-using UnityEditor.iOS.Xcode;
 using System.IO;
 using System.Collections.Generic;
+#if UNITY_IOS
+using UnityEditor.iOS.Xcode;
+#endif
 
 public class InfoPlist : MonoBehaviour {
 
