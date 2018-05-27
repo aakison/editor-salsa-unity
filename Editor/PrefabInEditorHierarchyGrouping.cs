@@ -12,7 +12,7 @@ public class PrefabInEditorHierarchyGrouping {
 
     static PrefabInEditorHierarchyGrouping() {
         EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
-        EditorApplication.hierarchyWindowChanged += HierarchyWindowChanged;
+        EditorApplication.hierarchyChanged += HierarchyWindowChanged;
 
         if(Application.HasProLicense()) {
             shade = new Color(1, 0.9f, 0.7f, 0.07f);
