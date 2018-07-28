@@ -57,7 +57,7 @@ public class PrefabInEditorHierarchyGrouping {
         }
 
         var containingPrefab = FindContainingPrefabRoot(gameObject);
-        var prefabFragment = PrefabUtility.GetPrefabParent(gameObject);
+        var prefabFragment = PrefabUtility.GetCorrespondingObjectFromSource(gameObject);
 
         if(containingPrefab == null) {
             lastPrefab = null;
@@ -132,12 +132,12 @@ public class PrefabInEditorHierarchyGrouping {
     /// </summary>
     private static GameObject FindContainingPrefabRootOld(GameObject gameObject) {
         var transform = gameObject.transform;
-        Object prefab = PrefabUtility.GetPrefabParent(transform.gameObject);
+        Object prefab = PrefabUtility.GetCorrespondingObjectFromSource(transform.gameObject);
         // Walk up until we find a prefab or the root.
         while(transform != null && prefab == null) {
             transform = transform.parent;
             if(transform != null) {
-                prefab = PrefabUtility.GetPrefabParent(transform.gameObject);
+                prefab = PrefabUtility.GetCorrespondingObjectFromSource(transform.gameObject);
             }
         }
         if(transform == null || prefab == null) {
@@ -149,7 +149,7 @@ public class PrefabInEditorHierarchyGrouping {
         while(transform != null && prefab != null) {
             transform = transform.parent;
             if(transform != null) {
-                var parentPrefab = PrefabUtility.GetPrefabParent(transform.gameObject);
+                var parentPrefab = PrefabUtility.GetCorrespondingObjectFromSource(transform.gameObject);
                 if(parentPrefab == null) {
                     return last.gameObject;
                 }
@@ -162,8 +162,8 @@ public class PrefabInEditorHierarchyGrouping {
 
     private static GameObject FindContainingPrefabRoot(GameObject gameObject) {
         return PathToRoot(gameObject)
-                .SkipWhile(e => PrefabUtility.GetPrefabParent(e) == null)
-                .LastOrDefault(e => PrefabUtility.GetPrefabParent(e) != null);
+                .SkipWhile(e => PrefabUtility.GetCorrespondingObjectFromSource(e) == null)
+                .LastOrDefault(e => PrefabUtility.GetCorrespondingObjectFromSource(e) != null);
     }
 
     private static IEnumerable<GameObject> PathToRoot(GameObject node) {
